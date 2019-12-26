@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class CreateToDoList extends Component {
     constructor(props) {
@@ -42,6 +43,10 @@ class CreateToDoList extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
+        axios.post('http://172.18.46.165:3000/todos/add', this)
+        .then(res => console.log(res.data));
+
         this.setState({
             todo_description: "",
             todo_responsible: "",
